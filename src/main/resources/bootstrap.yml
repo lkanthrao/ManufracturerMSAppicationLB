@@ -1,0 +1,20 @@
+---
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8001
+      
+---
+spring:
+  cloud:
+    consul:
+      discovery:
+        instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+        health-check-interval: 10s
+   
+  application:
+    name: manufacturerlb-microservice
+
+---
+server:
+  port: ${PORT:${SERVER_PORT:0}}
